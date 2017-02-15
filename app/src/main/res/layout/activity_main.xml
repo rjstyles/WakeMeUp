@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.rajeev.wakemeup.MainActivity"
+    android:background="#111120">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:background="@drawable/back"
+        android:layout_margin="10sp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_notify"
+            android:textSize="14sp"
+            android:background="#009999"
+            android:onClick="setAlarm"
+            android:textStyle="normal|bold"
+            android:fontFamily="sans-serif"
+            android:padding="5dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="150dp"
+            android:text="Wake Me UP!"/>
+
+        <TextView
+            android:text="Email : rajeevsinxh786@gmail.com"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/textView2"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:text="Version 1.2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/textView5"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="12sp"/>
+
+        <Button
+            android:text="Tue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/mon"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/tues"
+            android:background="@android:color/holo_red_light"
+            android:onClick="onWeekButtonClicked"/>
+
+        <Button
+            android:text="Mon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/button_notify"
+            android:layout_toLeftOf="@+id/textView3"
+            android:layout_toStartOf="@+id/textView3"
+            android:layout_marginRight="17dp"
+            android:layout_marginEnd="17dp"
+            android:layout_marginTop="70dp"
+            android:id="@+id/mon"
+            android:background="@android:color/holo_red_light"
+            android:onClick="onWeekButtonClicked"/>
+
+        <Button
+            android:text="WED"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/tues"
+            android:layout_toRightOf="@+id/textView3"
+            android:layout_toEndOf="@+id/textView3"
+            android:layout_marginLeft="18dp"
+            android:layout_marginStart="18dp"
+            android:id="@+id/wed"
+            android:background="@android:color/holo_red_light"
+            android:onClick="onWeekButtonClicked"/>
+
+        <Button
+            android:text="Tue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/mon"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/tue"
+            android:background="@android:color/holo_red_light"
+            android:onClick="onWeekButtonClicked"/>
+
+        <Button
+            android:text="THU"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mon"
+            android:layout_alignLeft="@+id/mon"
+            android:layout_alignStart="@+id/mon"
+            android:layout_marginTop="26dp"
+            android:id="@+id/thu"
+            android:background="@android:color/holo_red_light"
+            android:onClick="onWeekButtonClicked"/>
+
+        <Button
+            android:text="fri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/thu"
+            android:layout_toRightOf="@+id/mon"
+            android:layout_toEndOf="@+id/mon"
+            android:id="@+id/fri"
+            android:background="@android:color/holo_red_light"
+            android:onClick="onWeekButtonClicked"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/fri"
+            android:layout_alignLeft="@+id/wed"
+            android:layout_alignStart="@+id/wed"
+            android:id="@+id/sat"
+            android:text="SAT"
+            android:background="@android:color/holo_orange_dark"
+            android:onClick="onHolidayButtonClicked"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            android:textColor="@android:color/darker_gray"
+            android:text="Created by Rajeev Singh"
+            android:textSize="12sp"
+            android:layout_above="@+id/textView2"
+            android:layout_toLeftOf="@+id/sat"
+            android:layout_toStartOf="@+id/sat"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:id="@+id/textView3"
+            android:textSize="36sp"
+            android:textColor="@android:color/background_light"
+            android:textStyle="normal|bold"
+            android:fontFamily="monospace"
+            android:text="CS5"
+            android:background="@drawable/back"
+            android:paddingTop="5sp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+</LinearLayout>
