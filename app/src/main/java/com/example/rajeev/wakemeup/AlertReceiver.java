@@ -15,58 +15,66 @@ public class AlertReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
 
         String TodaysClass = "";
-
+        String day = "";
         Calendar calendar = Calendar.getInstance();
         switch (calendar.get(Calendar.DAY_OF_WEEK)) {
             case Calendar.SUNDAY:
                 TodaysClass += "Today no class, Enjoy the Holiday :)";
+                day = "SUNDAY";
                 break;
 
             case Calendar.MONDAY:
-                TodaysClass += "08-09:OOSD, " +
-                               "09-10:ECO, " +
-                               "10-11:CD, " +
-                               "12-01:HPCA, " +
-                               "01-02:CG";
+                TodaysClass += "OOSD, " +
+                               "ECO, " +
+                               "CD, " +
+                               "HPCA, " +
+                               "CG";
+                day = "MONDAY";
                 break;
 
             case Calendar.TUESDAY:
-                TodaysClass += "08-11:CG LAB, " +
-                               "11-12:HPCA, " +
-                               "03-04:CD, " +
-                               "04-05:CG, " +
-                               "05-06:ECO";
+                TodaysClass += "CG LAB, " +
+                               "HPCA, " +
+                               "CD, " +
+                               "CG, " +
+                               "ECO";
+                day = "TUESDAY";
                 break;
 
             case Calendar.WEDNESDAY:
-                TodaysClass += "08-09:OOSD, " +
-                               "09-10:CG, " +
-                               "10-11:CD, " +
-                               "03-06:SE LAB";
+                TodaysClass += "OOSD, " +
+                               "CG, " +
+                               "CD, " +
+                               "SE LAB";
+                day = "WEDNESDAY";
+                break;
 
             case Calendar.THURSDAY:
-                TodaysClass += "11-02:CD LAB, " +
-                               "03-04:HPCA, " +
-                               "04-05:OOSD, " +
-                               "05-06:CD";
+                TodaysClass += "CD LAB, " +
+                               "HPCA, " +
+                               "OOSD, " +
+                               "CD";
+                day = "THURSDAY";
                 break;
 
             case Calendar.FRIDAY:
-                TodaysClass += "11-12:HPCA, " +
-                               "12-01:OOSD, " +
-                               "01-02:ECO, " +
-                               "12-01:HPCA, " +
-                               "03-06:CAT-2";
+                TodaysClass += "HPCA, " +
+                               "OOSD, " +
+                               "ECO, " +
+                               "HPCA, " +
+                               "CAT-2";
+                day = "FRIDAY";
                 break;
 
             case Calendar.SATURDAY:
                 TodaysClass += "Today no class, Enjoy the Holiday :)";
+                day = "SATURDAY";
                 break;
         }
 
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-
         Intent intent1 = new Intent(context, Todays_Class.class);
+        intent1.putExtra("Day", day);
         intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         PendingIntent notificIntent = PendingIntent.getActivity(context, 100, intent1,

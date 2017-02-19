@@ -15,14 +15,15 @@ public class Todays_Class extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.todays_class);
-
-        textView = (TextView)findViewById(R.id.todays_class);
         Bundle data = getIntent().getExtras();
-
-        if(data != null) {
-                day = data.getString("Day");
+        if (data != null) {
+            day = data.getString("Day");
+            if (day.equals("SUNDAY") || day.equals("SATURDAY")) {
+                setContentView(R.layout.holiday);
+                return;
+            }
         }
-
+        textView = (TextView) findViewById(R.id.todays_class);
         setTodaysClass(day);
     }
 
@@ -37,11 +38,14 @@ public class Todays_Class extends AppCompatActivity {
                 case Calendar.WEDNESDAY: day = "WEDNESDAY"; break;
                 case Calendar.THURSDAY: day = "THURSDAY"; break;
                 case Calendar.FRIDAY: day = "FRIDAY"; break;
+                case Calendar.SATURDAY: day = "SATURDAY"; break;
+                case Calendar.SUNDAY: day = "SUNDAY"; break;
             }
         }
         else {
             TextView textView = (TextView) findViewById(R.id.textView4);
-            textView.setText(day.charAt(0)+ day.toLowerCase().substring(1)+"'s Class");
+            if(textView != null)
+                textView.setText(day.charAt(0)+ day.toLowerCase().substring(1)+"'s Class");
         }
 
         switch (day) {
@@ -81,10 +85,12 @@ public class Todays_Class extends AppCompatActivity {
 
             case "FRIDAY":
                 todaysClass += "11-12  :   HPCA(C13)\n\n" +
-                               "12-01  :   OOSD(C13)\n\n" +
-                               "01-02  :    ECO(C13)\n\n" +
+                               "12-01  :    ECO(C13)\n\n" +
+                               "01-02  :   OOSD(C13)\n\n" +
                                "03-06  :  CAT-2(DL2)";
                 break;
+            case "SATURDAY":
+                todaysClass += "Today no class,\nEnjoy the Holiday :)";
         }
 
         textView.setText(todaysClass);

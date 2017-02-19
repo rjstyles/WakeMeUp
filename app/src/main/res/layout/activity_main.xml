@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.rajeev.wakemeup.MainActivity"
-    android:background="#111120">
+    android:background="#110011">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -44,12 +44,12 @@
             android:textSize="12sp"/>
 
         <TextView
-            android:text="Version 1.2"
+            android:text="Version"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/textView"
+            android:layout_above="@+id/developer"
             android:layout_centerHorizontal="true"
-            android:id="@+id/textView5"
+            android:id="@+id/version"
             android:textColor="@android:color/darker_gray"
             android:textSize="12sp"/>
 
@@ -131,15 +131,15 @@
             android:layout_alignStart="@+id/wed"
             android:id="@+id/sat"
             android:text="SAT"
-            android:background="@android:color/holo_orange_dark"
+            android:background="#009955"
             android:onClick="onHolidayButtonClicked"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView"
+            android:id="@+id/developer"
             android:textColor="@android:color/darker_gray"
-            android:text="Created by Rajeev Singh"
+            android:text="Created by Rajeev Singh   "
             android:textSize="12sp"
             android:layout_above="@+id/textView2"
             android:layout_toLeftOf="@+id/sat"

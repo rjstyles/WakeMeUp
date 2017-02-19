@@ -9,23 +9,73 @@ import java.util.Calendar;
 
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button todays_button;
+    private String version_no = "1.3.1";
+    String developer_name = "Created by Rajeev Singh  ";
+
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            TextView developer = (TextView) findViewById(R.id.developer);
+            developer.setText(developer_name);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTodaysButton();
+        setVersion();
+        setDeveloper();
+        rotatename();
+    }
+
+    private void setDeveloper() {
+        TextView developer = (TextView) findViewById(R.id.developer);
+        developer.setText(developer_name);
+    }
+
+    public void rotatename() {
+        Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND);
+                TextView developer = (TextView) findViewById(R.id.developer);
+                while (true) {
+                    developer_name = developer.getText().toString();
+                    developer_name = developer_name.substring(1) + developer_name.charAt(0);
+                    synchronized (this) {
+                        try {
+                            wait(200);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    handler.sendEmptyMessage(0);
+                }
+            }
+        };
+        Thread mythread = new Thread(r);
+        mythread.start();
+    }
+
+    private void setVersion() {
+        TextView version = (TextView) findViewById(R.id.version);
+        version.setText("Version "+ version_no);
     }
 
     public void setTodaysButton() {
@@ -51,8 +101,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         Drawable bg = ContextCompat.getDrawable(getApplicationContext(), R.drawable.back);
-        todays_button.setTextColor(Color.WHITE);
-        todays_button.setBackground(bg);
+        if(todays_button != null) {
+            todays_button.setTextColor(Color.WHITE);
+            todays_button.setBackground(bg);
+        }
     }
 
     public void onHolidayButtonClicked(View view) {
@@ -72,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
                 alarm.set(Calendar.HOUR_OF_DAY, selectedHour);
                 alarm.set(Calendar.MINUTE, selectedMinute);
                 alarm.set(Calendar.SECOND, 0);
+                alarm.set(Calendar.MILLISECOND, 0);
 
                 String AM_PM = "";
 
